@@ -15,6 +15,20 @@ let daily = ref({})  // 天气指数
 let hourly = ref({})  // 每小时数据
 let air = ref({})  // 空气质量
 
+// 改进的图标路径获取函数
+const getIconUrl = (icon) => {
+  if (!icon) return '';
+  try {
+    // 使用 Vite 的 import.meta.glob 动态导入
+    const modules = import.meta.glob('../assets/images/*.svg', { eager: true });
+    const path = `../assets/images/${icon}.svg`;
+    return modules[path]?.default || '';
+  } catch (e) {
+    console.error('加载图标失败:', e);
+    return '';
+  }
+};
+
 // 搜索功能
 const search = async () => {
   city2.value = city.value
@@ -231,7 +245,9 @@ function chartInit1() {
       <div class="weather-left">
         <div class="labelWeather">{{ city2 }}天气</div>
         <div class="weather-summary">
-          <img :src="`/src/assets/images/${weather.icon}.svg`" alt="">
+          <!-- 添加条件渲染，防止图标未定义 -->
+          <img v-if="weather.icon" :src="getIconUrl(weather.icon)" alt="天气图标">
+          <div v-else class="icon-placeholder">无图标数据</div>
           <p class="weather-temp">{{ weather.temp }}<span class="celsius">℃</span></p>
           <div class="weather-describe">
             <div class="weather-text">{{ weather.text }}</div>
