@@ -1,6 +1,8 @@
 # 🌤️ Vue天气应用
 
 基于Vue 3和ECharts的实时天气应用，使用和风天气API获取精准天气数据
+在线演示
+🌐 立即体验：(https://vue-weather-app-weld-one.vercel.app)
 
 ## ✨ 功能亮点
 
