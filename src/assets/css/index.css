@@ -1,160 +1,299 @@
+/* 基础样式 */
+.container {
+    color: #fff;
+    background: linear-gradient(#245393, #1E4787);
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
 
+/* 响应式宽度 */
+.weatherWidth {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
 
 /* 搜索框 */
-.container {
-    color:#fff;
-    background:linear-gradient(#245393,#1E4787)
-}
-.weatherWidth {
-    width: 1200px;
-    margin: auto;
-}
 .search {
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px 0;
+    padding: 15px 0;
 }
+
 .search-item {
     display: flex;
     border-radius: 200px;
     background-color: #fff;
-    width: 440px;
+    width: 100%;
+    max-width: 440px;
     height: 46px;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
 }
+
 .search-item input {
     flex: 1 1 0;
-    margin:0 15px;
+    margin: 0 15px;
     line-height: 24px;
-    border:0;
+    border: 0;
+    font-size: 16px;
+    padding: 10px 0;
+    -webkit-appearance: none;
 }
-/* 搜索按钮 */
+
 .search-item button {
-    border:0;
-    background:0;
+    border: 0;
+    background: 0;
     font-size: 20px;
     margin-right: 20px;
-    cursor: pointer;  /* 鼠标移动到这变为小手 */
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: transform 0.1s;
 }
-/* 今日天气 */
+
+.search-item button:active, 
+.search-item button.active {
+    transform: scale(0.95);
+}
+
+/* 天气主区域 */
 .weather {
     display: flex;
     justify-content: space-between;
     gap: 20px;
     padding: 20px 0;
+    flex-wrap: wrap;
 }
+
+.weather-left, .weather-right {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
 .weather-left {
-    flex:3;  /* 宽度为3 */
-    background-color:rgba(255, 255, 255, 0.08);
-    border-radius: 10px;  /* 圆角 */
-    padding:10px 20px;
+    flex: 3;
+    min-width: 0;
 }
+
+.weather-right {
+    flex: 1;
+    min-width: 300px;
+}
+
 .labelWeather {
     font-weight: 600;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     line-height: 22px;
-    white-space: nowrap;
+    font-size: 18px;
 }
+
+/* 天气概览 */
 .weather-summary {
     display: flex;
-    gap:5px;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
 .weather-summary img {
     width: 80px;
     height: 80px;
+    flex-shrink: 0;
 }
+
 .weather-temp {
     font-size: 60px;
     line-height: 62px;
     margin-left: 8px;
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
+
 .celsius {
-    height: 100%;
     font-size: 34px;
 }
+
 .weather-describe {
-    margin-left: 32px;
+    margin-left: 20px;
+    flex: 1;
+    min-width: 0;
 }
+
 .weather-text {
     font-size: 18px;
     font-weight: 600;
-    padding-top: 20px;
     line-height: 24px;
 }
+
 .wether-feelslike {
     height: 22px;
     padding-top: 5px;
 }
+
+/* 天气详情 */
 .weather-item {
-    margin: 10px 0;
+    margin: 15px 0;
 }
+
 .weather-item ul {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
 }
+
 .weather-item ul li {
+    flex: 1 1 calc(33.333% - 10px);
+    min-width: 120px;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 10px 5px;
+    box-sizing: border-box;
 }
+
 .item-title {
     font-size: 12px;
+    opacity: 0.8;
 }
+
 .item-details {
     font-size: 16px;
     font-weight: 600;
     padding-top: 5px;
 }
-/* 生活指数  */
+
+/* 生活指数 */
 .daily-item {
-    background-color:rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.08);
     border-radius: 10px;
-    padding:10px 20px;
+    padding: 15px;
     margin-bottom: 20px;
 }
+
 .daily-item ul {
     display: flex;
-    flex-wrap: wrap;  /* 换行  */
-    justify-content: space-between;   /* 两端对齐 */
-    gap: 20px 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
 }
+
 .daily-item ul li {
-    flex: 0 1 48%;
-    background-color:rgba(255, 255, 255, 0.08);
+    flex: 0 1 calc(50% - 15px);
+    background-color: rgba(255, 255, 255, 0.08);
     border-radius: 10px;
-    padding: 10px;
+    padding: 12px;
     display: flex;
     align-items: center;
+    min-width: 0;
 }
+
 .daily-icon {
-    margin-right: 20px;
+    margin-right: 15px;
+    flex-shrink: 0;
 }
+
 .daily-icon i {
-    font-size: 26px;
+    font-size: 24px;
     background-color: #22A6F5;
     border-radius: 50%;
     padding: 8px;
-}
-.daily-box-text {
-    font-size: 12px;
-    color:#c0c0c0;
-}
-.daily-box-name {
-    font-weight: 600;
-    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
 }
 
-/* 空气质量 */
-.weather-right {
-    flex:1;
-    background-color:rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding:10px 20px;
+.daily-box {
+    min-width: 0;
 }
-/* 每小时的数据  */
-.hourly {
-    background-color:rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding:10px 20px;
-    margin-bottom: 20px;
+
+.daily-box-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.daily-box-text {
+    font-size: 12px;
+    color: #c0c0c0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 图表容器 */
+#chart, #chart1 {
+    width: 100%;
+    height: 400px;
+}
+
+/* 移动端样式 */
+@media screen and (max-width: 768px) {
+    .weather {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .weather-left, .weather-right {
+        width: 100%;
+        flex: none;
+    }
+    
+    .weather-item ul li {
+        flex: 1 1 calc(50% - 10px);
+    }
+    
+    .daily-item ul li {
+        flex: 1 1 100%;
+    }
+    
+    #chart, #chart1 {
+        height: 300px;
+    }
+    
+    .weather-summary {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .weather-describe {
+        margin-left: 0;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .weather-item ul li {
+        flex: 1 1 100%;
+    }
+    
+    .weather-temp {
+        font-size: 48px;
+    }
+    
+    .daily-icon i {
+        font-size: 20px;
+        width: 36px;
+        height: 36px;
+        padding: 6px;
+    }
+    
+    #chart, #chart1 {
+        height: 250px;
+    }
+    
+    .labelWeather {
+        font-size: 16px;
+    }
 }
